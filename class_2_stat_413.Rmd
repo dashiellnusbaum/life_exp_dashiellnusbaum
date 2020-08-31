@@ -1,0 +1,54 @@
+---
+title: "class_2_stat_413"
+author: "Dashiell Nusbaum"
+date: "8/31/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+when we do git init, should we always do that from a seperate directory? I think so.
+if you've already done git init you don't need to do it again
+each git repo should be a seperate project
+
+
+
+
+
+
+
+Exercise: As a next step in the analysis of the gapminder_unfiltered data frame, add code in life_exp_analysis.Rmd that
+
+    Loads the gapminder_unfiltered data frame into R, and
+    Calculates the maximum life expectancy each year and the corresponding country that had that maximum life expectancy. Hint: There are multiple ways to do this, but the easiest involves group_by() and filter().
+
+```{r,message=FALSE}
+library(gapminder)
+library(tidyverse)
+```
+
+```{r}
+gapminder_unfiltered %>%
+  group_by(year) %>%
+  filter(lifeExp==max(lifeExp)) %>%
+  select(country,year,lifeExp) %>%
+  ungroup() %>%
+  arrange(year)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
